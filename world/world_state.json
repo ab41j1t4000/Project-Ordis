@@ -1,0 +1,50 @@
+{
+  "entities": [
+    {
+      "id": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
+      "type": "project",
+      "name": "Project-Ordis",
+      "meta": null
+    },
+    {
+      "id": "ef0e1c30-c122-4060-941d-f5dc95a635bf",
+      "type": "person",
+      "name": "operator",
+      "meta": null
+    },
+    {
+      "id": "e6888362-d5c9-4e79-9669-c26daf2088d0",
+      "type": "file",
+      "name": "test.txt",
+      "meta": {
+        "path": "/Users/abhijith/My_Stuff/Projects/Project-Ordis/perception/inbox/test.txt"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "id": "eb6bf616-dc9e-4e5a-a440-6fc95ca5c0d3",
+      "type": "owned_by",
+      "src": "e6888362-d5c9-4e79-9669-c26daf2088d0",
+      "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
+      "confidence": 1.0,
+      "note": null
+    },
+    {
+      "id": "cc7a585b-92f9-47f5-a378-b3d709f76c0d",
+      "type": "mentions",
+      "src": "e6888362-d5c9-4e79-9669-c26daf2088d0",
+      "dst": "ef0e1c30-c122-4060-941d-f5dc95a635bf",
+      "confidence": 1.0,
+      "note": null
+    },
+    {
+      "id": "247b7153-7705-44a6-b6d1-d995bec2011c",
+      "type": "part_of",
+      "src": "e6888362-d5c9-4e79-9669-c26daf2088d0",
+      "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
+      "confidence": 1.0,
+      "note": null
+    }
+  ]
+}

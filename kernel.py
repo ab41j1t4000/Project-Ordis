@@ -4,6 +4,8 @@ import yaml
 from pathlib import Path
 from datetime import datetime
 from typing import Any, Dict
+from world.model import WorldModel
+from world.update_rules import apply_event
 
 IDENTITY_PATH = Path(__file__).parent / "identity.yaml"
 EPISODIC_DB_PATH = Path(__file__).parent / "memory" / "episodic.db"
@@ -19,6 +21,7 @@ class Kernel:
     def __init__(self):
         self.identity = self._load_identity()
         self.conn = self._init_episodic_db()
+        self.world = WorldModel.load()
 
     def _load_identity(self) -> Identity:
         with open(IDENTITY_PATH, "r") as f:
@@ -57,3 +60,13 @@ class Kernel:
 
     def shutdown(self):
         self.conn.close()
+    
+    def ingest_event(self, event):
+        """
+        Store any perception Event into episodic memory.
+        """
+        self.log_episode(event.event_type, event.model_dump())
+        notes = apply_event(self.world, event)
+        if notes:
+            self.log_episode("world_update", {"notes": notes})
+            self.world.save()
