@@ -1,3 +1,5 @@
+Designed bv Abhijith, written by chatgpt
+
 # 🧬 PROJECT-ORDIS — DEVELOPMENT EVOLUTION MAP
 *A bottom-up organism architecture inspired by real neurobiology.*
 
