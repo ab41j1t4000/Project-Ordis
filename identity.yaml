@@ -1,3 +1,22 @@
-name: "PrototypeAgent"
-purpose: "Run tick loop, store memory, respond with rules"
-version: "0.0.1"
+name: "Ordis"
+codename: "Project-Ordis"
+origin: "Cephalon (Warframe-inspired assistant archetype)"
+purpose: "Deterministic agent kernel: tick loop, memory v0, tool routing."
+version: "0.0.1-kernel"
+scope_lock:
+  week: 1
+  allowed:
+    - "identity load"
+    - "tick loop"
+    - "episodic memory logging"
+    - "tool router stub"
+    - "basic eval"
+  forbidden:
+    - "planning"
+    - "autonomy"
+    - "personality engine"
+    - "moral reasoning"
+    - "self-modifying goals"
+notes:
+  - "Jarvis/Ordis feel comes later in userland layer."
+  - "Kernel stays deterministic and boring."
