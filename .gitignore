@@ -1,4 +1,13 @@
 venv/
+.env
 __pycache__/
+*.pyc
+*.sqlite
 *.db
-memory/chroma_store/
+.DS_Store
+
+# agent runtime state
+**/world_state.json
+**/semantic_state.json
+**/eval_state.json
+**/episodic.db

@@ -6,6 +6,10 @@ from datetime import datetime
 from typing import Any, Dict
 from world.model import WorldModel
 from world.update_rules import apply_event
+from eval.store import EvalStore
+from eval.coherence import run_coherence_eval
+from semantic.memory import SemanticMemory
+from semantic.consolidate import consolidate
 
 IDENTITY_PATH = Path(__file__).parent / "identity.yaml"
 EPISODIC_DB_PATH = Path(__file__).parent / "memory" / "episodic.db"
@@ -22,6 +26,8 @@ class Kernel:
         self.identity = self._load_identity()
         self.conn = self._init_episodic_db()
         self.world = WorldModel.load()
+        self.semantic = SemanticMemory.load()
+        self.eval_store = EvalStore.load()
 
     def _load_identity(self) -> Identity:
         with open(IDENTITY_PATH, "r") as f:
@@ -71,3 +77,19 @@ class Kernel:
         if notes:
             self.log_episode("world_update", {"notes": notes})
             self.world.save()
+    
+    def run_consolidation(self):
+        notes = consolidate(self.world, self.semantic)
+        if notes:
+            self.semantic.save()
+            self.log_episode("semantic_update", {"notes": notes})
+    
+    def run_eval(self):
+        r = run_coherence_eval(self.world, self.semantic)
+        self.eval_store.add_record(r)
+        self.eval_store.save()
+        self.log_episode("eval", {
+            "type": r.eval_type,
+            "score": r.score,
+            "notes": r.notes
+        })

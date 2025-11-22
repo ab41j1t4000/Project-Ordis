@@ -12,6 +12,12 @@ if __name__ == "__main__":
 
         for file_evt in scan_inbox():
             k.ingest_event(file_evt)
+        
+        # Week-4: consolidate episodic/world into semantic facts
+        k.run_consolidation()
+
+        # Week-5: run coherence evaluator
+        k.run_eval()
 
         # then resume Week-1 heartbeat
         run_tick_loop(k.step, max_ticks=5)
