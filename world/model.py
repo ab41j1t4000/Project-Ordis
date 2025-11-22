@@ -45,8 +45,8 @@ class WorldModel:
     # ---- persistence ----
     def save(self):
         data = {
-            "entities": [e.model_dump() for e in self.entities.values()],
-            "relations": [r.model_dump() for r in self.relations.values()],
+            "entities": [e.model_dump() if hasattr(e, "model_dump") else e.dict() for e in self.entities.values()],
+            "relations": [r.model_dump() if hasattr(r, "model_dump") else r.dict() for r in self.relations.values()],
         }
         WORLD_STATE_PATH.write_text(
             json.dumps(data, indent=2), encoding="utf-8"

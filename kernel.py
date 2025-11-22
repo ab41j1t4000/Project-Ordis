@@ -65,7 +65,8 @@ class Kernel:
         """
         Store any perception Event into episodic memory.
         """
-        self.log_episode(event.event_type, event.model_dump())
+        payload = event.model_dump() if hasattr(event, "model_dump") else event.__dict__
+        self.log_episode(event.event_type, payload)
         notes = apply_event(self.world, event)
         if notes:
             self.log_episode("world_update", {"notes": notes})
