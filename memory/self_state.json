@@ -1,0 +1,18 @@
+{
+  "mode": "evaluating",
+  "safe_mode": false,
+  "last_tick_ts": "2025-11-24T20:16:28.454282",
+  "last_event_ts": "2025-11-24T19:31:07.225558",
+  "last_event_type": "chat",
+  "active_goal_id": "goal_1",
+  "notes": {
+    "last_eval": {
+      "type": "coherence_v0",
+      "score": 1.0,
+      "notes": [],
+      "ts": "2025-11-24T20:16:28.455611"
+    },
+    "coherence": 1.0,
+    "entropy": 0.0
+  }
+}

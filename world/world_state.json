@@ -19,6 +19,20 @@
       "meta": {
         "path": "/Users/abhijith/My_Stuff/Projects/Project-Ordis/perception/inbox/test.txt"
       }
+    },
+    {
+      "id": "90578964-0c42-4544-a54d-a09eb6e0a74a",
+      "type": "person",
+      "name": "Abhijith",
+      "meta": null
+    },
+    {
+      "id": "5b3d6ad0-87bf-40af-b9a9-5da2e9d10640",
+      "type": "file",
+      "name": "hello.txt",
+      "meta": {
+        "path": "/Users/abhijith/My_Stuff/Projects/Project-Ordis/perception/inbox/hello.txt"
+      }
     }
   ],
   "relations": [
@@ -66,6 +80,38 @@
       "id": "dc11e503-620b-4059-b217-cb895a630370",
       "type": "part_of",
       "src": "e6888362-d5c9-4e79-9669-c26daf2088d0",
+      "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
+      "confidence": 1.0,
+      "note": null
+    },
+    {
+      "id": "831cec28-b391-4527-8495-ab2f3a63db86",
+      "type": "part_of",
+      "src": "e6888362-d5c9-4e79-9669-c26daf2088d0",
+      "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
+      "confidence": 1.0,
+      "note": null
+    },
+    {
+      "id": "6c87e7d4-6858-4d71-92bf-f0fcf907d5f0",
+      "type": "part_of",
+      "src": "e6888362-d5c9-4e79-9669-c26daf2088d0",
+      "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
+      "confidence": 1.0,
+      "note": null
+    },
+    {
+      "id": "fe47f8a8-9a75-4587-8039-20180aca8b25",
+      "type": "part_of",
+      "src": "5b3d6ad0-87bf-40af-b9a9-5da2e9d10640",
+      "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
+      "confidence": 1.0,
+      "note": null
+    },
+    {
+      "id": "125f99f8-97ed-4a58-8472-41149fc37425",
+      "type": "part_of",
+      "src": "5b3d6ad0-87bf-40af-b9a9-5da2e9d10640",
       "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
       "confidence": 1.0,
       "note": null
