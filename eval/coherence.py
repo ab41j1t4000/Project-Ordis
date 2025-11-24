@@ -1,7 +1,8 @@
 from typing import List
 from .records import EvalRecord
 from world.model import WorldModel
-from semantic.memory import SemanticMemory
+from memory.semantic.memory import SemanticMemory
+
 
 def run_coherence_eval(wm: WorldModel, sm: SemanticMemory) -> EvalRecord:
     notes: List[str] = []
@@ -33,7 +34,9 @@ def run_coherence_eval(wm: WorldModel, sm: SemanticMemory) -> EvalRecord:
         # files must be part_of Project-Ordis
         if project_id:
             total += 1
-            ok2 = bool(sm.find_facts(subject=f.id, predicate="part_of", object=project_id))
+            ok2 = bool(
+                sm.find_facts(subject=f.id, predicate="part_of", object=project_id)
+            )
             if ok2:
                 passed += 1
             else:
@@ -41,8 +44,4 @@ def run_coherence_eval(wm: WorldModel, sm: SemanticMemory) -> EvalRecord:
 
     score = (passed / total) if total > 0 else 1.0
 
-    return EvalRecord(
-        eval_type="coherence_v0",
-        score=score,
-        notes=notes
-    )
+    return EvalRecord(eval_type="coherence_v0", score=score, notes=notes)

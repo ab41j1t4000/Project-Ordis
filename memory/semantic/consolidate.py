@@ -1,14 +1,12 @@
 from typing import List
-from semantic.memory import SemanticMemory
-from semantic.facts import Fact
+from memory.semantic.memory import SemanticMemory
+from memory.semantic.facts import Fact
 from world.model import WorldModel
 
 
 def _upsert(sm: SemanticMemory, fact: Fact) -> str:
     existing = sm.find_facts(
-        subject=fact.subject,
-        predicate=fact.predicate,
-        object=fact.object
+        subject=fact.subject, predicate=fact.predicate, object=fact.object
     )
 
     if existing:

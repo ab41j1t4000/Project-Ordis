@@ -1,5 +1,5 @@
-from kernel import Kernel
-from tick import run_tick_loop
+from kernel.kernel import Kernel
+from kernel.tick import run_tick_loop
 from perception.text_ingest import ingest_chat
 from perception.file_ingest import scan_inbox
 
@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
         for file_evt in scan_inbox():
             k.ingest_event(file_evt)
-        
+
         # Week-4: consolidate episodic/world into semantic facts
         k.run_consolidation()
 

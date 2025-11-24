@@ -61,6 +61,14 @@
       "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
       "confidence": 1.0,
       "note": null
+    },
+    {
+      "id": "dc11e503-620b-4059-b217-cb895a630370",
+      "type": "part_of",
+      "src": "e6888362-d5c9-4e79-9669-c26daf2088d0",
+      "dst": "12ab9e36-6228-4f3f-b716-d8a212b1fb61",
+      "confidence": 1.0,
+      "note": null
     }
   ]
 }

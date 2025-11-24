@@ -8,11 +8,11 @@ from world.model import WorldModel
 from world.update_rules import apply_event
 from eval.store import EvalStore
 from eval.coherence import run_coherence_eval
-from semantic.memory import SemanticMemory
-from semantic.consolidate import consolidate
+from memory.semantic.memory import SemanticMemory
+from memory.semantic.consolidate import consolidate
 
-IDENTITY_PATH = Path(__file__).parent / "identity.yaml"
-EPISODIC_DB_PATH = Path(__file__).parent / "memory" / "episodic.db"
+IDENTITY_PATH = Path(__file__).parent.parent / "identity" / "identity.yaml"
+EPISODIC_DB_PATH = Path(__file__).parent.parent / "memory" / "episodic.db"
 
 
 class Identity(BaseModel):
@@ -66,7 +66,7 @@ class Kernel:
 
     def shutdown(self):
         self.conn.close()
-    
+
     def ingest_event(self, event):
         """
         Store any perception Event into episodic memory.
@@ -77,19 +77,17 @@ class Kernel:
         if notes:
             self.log_episode("world_update", {"notes": notes})
             self.world.save()
-    
+
     def run_consolidation(self):
         notes = consolidate(self.world, self.semantic)
         if notes:
             self.semantic.save()
             self.log_episode("semantic_update", {"notes": notes})
-    
+
     def run_eval(self):
         r = run_coherence_eval(self.world, self.semantic)
         self.eval_store.add_record(r)
         self.eval_store.save()
-        self.log_episode("eval", {
-            "type": r.eval_type,
-            "score": r.score,
-            "notes": r.notes
-        })
+        self.log_episode(
+            "eval", {"type": r.eval_type, "score": r.score, "notes": r.notes}
+        )
